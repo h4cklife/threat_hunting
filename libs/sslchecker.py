@@ -106,7 +106,7 @@ class SSLChecker(object):
         :param port:
         :return:
 
-        Returns Trie if the domain has an SSL Certificate
+        Returns True if the domain has an SSL Certificate
 
         """
         if domain is None:

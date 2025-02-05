@@ -1,5 +1,11 @@
 # Phishing & Threat Hunting Classes
 
+You may install this directly into your projects by using PIP. See: https://pypi.org/project/threat-hunting-libs/
+
+```bash
+pip install threat-hunting-libs
+```
+
 ## Whois Class
 
 Whois class usage example

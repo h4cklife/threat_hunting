@@ -105,6 +105,59 @@ own package you will first need to register to pypi.org, verify your account and
 
 Once complete, install the following packages into your Python Virtual Environment.
 
+### New Method
+
+Note, the OLD method to publish ti PyPI is below this section but the main change here is that we are not running 
+setup.py directly anymore and the .pypirc file is no longer required because twine will ask for your key. 
+
+....at least, this is my understanding thus far. Don't hate me, if something about the new methods documented here 
+are incorrect. I'm still researching this topic but this worked for me after already having the old method setup.
+
+If something here fails, see the OLD METHOD below.
+
+```bash
+python -m pip install build
+python -m pip install tqdm
+python -m pip install --upgrade twine
+```
+
+Now, create a setup.py file as follows. Be sure to update the install_requires array with any additional packages 
+required by your additions or changes to the code.
+
+```python
+import setuptools
+
+with open("README.md", "r") as fh:
+    long_description = fh.read()
+
+setuptools.setup(
+    name="<PACKAGE_NAME>",
+    version="0.0.1",
+    author="<USERNAME>",
+    author_email="<EMAIL ADDRESS>",
+    description="Libraries and modules to assist in threat hunting and research.",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/<USERNAME>/<PACKAGE_URL>",
+    packages=setuptools.find_packages(),
+    install_requires=['certifi', 'pytz'],
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
+)
+```
+
+Now, you can push up your package to PyPI.
+
+```bash
+python3 -m build
+twine upload dist/*
+```
+
+### Old Method 
+
 ```bash
 python -m pip install --upgrade pip setuptools wheel
 python -m pip install tqdm
@@ -174,6 +227,9 @@ python -m twine upload dist/*
 
 Congratulations, you have now created your own package.
 
+
+## Testing The Package
+
 To test it out, create a test project with a Python Virtual Environment and install your package.
 
 ```bash
@@ -188,6 +244,7 @@ vim test.py
 ```
 
 Write a little code that uses your packages libraries/modules and give it a go!
+
 
 
 

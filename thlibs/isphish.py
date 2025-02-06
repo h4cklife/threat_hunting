@@ -1,5 +1,8 @@
 import os
+import sys
 import requests
+import base64
+import json
 
 class isPhish(object):
     """
@@ -11,6 +14,7 @@ class isPhish(object):
     def __init__(self, **kwargs):
         self.__dict__.update(kwargs)
         self.APIKey_CheckPhish = os.getenv("APIKey_CheckPhish")
+        self.APIKey_PhishTank = os.getenv("APIKey_PhishTank")
 
     def scan_with_checkphish(self, url=None, scan_type="full"):
         """
@@ -68,3 +72,20 @@ class isPhish(object):
         response = requests.post("https://developers.bolster.ai/api/neo/scan/status", headers=headers, json=data)
 
         return response.json()
+
+    def scan_with_phishtank(self, url=None):
+        if url is None:
+            url = self.url
+
+        headers = {"User-Agent": "phishtank/F4T4L"}
+
+        data = {"url": f"{url}",
+                "format": "json"}
+
+        if self.APIKey_PhishTank is not None:
+            data['app_key'] = self.APIKey_PhishTank
+
+        response = requests.post("https://checkurl.phishtank.com/checkurl/", headers=headers, data=data)
+
+        return response.json()
+

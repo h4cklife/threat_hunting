@@ -91,6 +91,14 @@ print(r)
 {'job_id': '249ad32c-3976-4af4-8d14-54abe2af0beb', 'status': 'DONE', 'url': 'https://example.com/', 'url_sha256': '0f115db062b7c0dd030b16878c99dea5c354b49dc37b38eb8846179c7783e9d7', 'disposition': 'clean', 'brand': 'unknown', 'insights': 'https://checkphish.ai/insights/url/1738792650331/0f115db062b7c0dd030b16878c99dea5c354b49dc37b38eb8846179c7783e9d7', 'resolved': False, 'screenshot_path': 'https://bst-prod-screenshots.s3-us-west-2.amazonaws.com/20250205/0f115db062b7c0dd030b16878c99dea5c354b49dc37b38eb8846179c7783e9d7_1738792650331.png', 'scan_start_ts': 1738792650318, 'scan_end_ts': 1738792656866, 'error': False, 'image_objects': [], 'categories': ['domain_purchase']}
 ```
 
+```python
+from thlibs.isphish import isPhish
+isp = isPhish()
+
+isp.scan_with_phishtank(url="http://trezor-iouppstart.webflow.io")
+{'meta': {'timestamp': '2025-02-06T06:42:58+00:00', 'serverid': 'e5f3084e', 'status': 'success', 'requestid': '172.17.128.1.67a459f21efa92.13439159'}, 'results': {'url': 'http://trezor-iouppstart.webflow.io', 'in_database': True, 'phish_id': 8963829, 'phish_detail_page': 'http://www.phishtank.com/phish_detail.php?phish_id=8963829', 'verified': True, 'verified_at': '2025-02-06T06:12:39+00:00', 'valid': True}}
+```
+
 
 ## Creating A PyPi (PIP) Package
 

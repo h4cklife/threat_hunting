@@ -59,7 +59,7 @@ isPhish is used to scan website URLs against various services that check for Phi
 you to have a valid API Key for each service you intend to use.
 
 Note that the PhishTank key can be omitted from venv/bin/activate if you don't have an "App Key". The key
-is option on PhishTank.
+is optional on PhishTank.
 
 You can use any method you like to insert your API Keys into the environment so that they are
 static between logins or just available when your application is run. This is just how I configured it
@@ -111,7 +111,7 @@ Once complete, install the following packages into your Python Virtual Environme
 
 ### New Method
 
-Note, the OLD method to publish ti PyPI is below this section but the main change here is that we are not running 
+Note, the OLD method to publish to PyPI is below this section but the main change here is that we are not running 
 setup.py directly anymore and the .pypirc file is no longer required because twine will ask for your key. 
 
 ....at least, this is my understanding thus far. Don't hate me, if something about the new methods documented here 

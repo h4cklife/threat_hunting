@@ -58,8 +58,12 @@ True
 isPhish is used to scan website URLs against various services that check for Phishing. This class will require
 you to have a valid API Key for each service you intend to use.
 
+Note that the PhishTank key can be omitted from venv/bin/activate if you don't have an "App Key". The key
+is option on PhishTank.
+
 You can use any method you like to insert your API Keys into the environment so that they are
-static between logins or just available when your application is run. 
+static between logins or just available when your application is run. This is just how I configured it
+for development purposes.
 
 The isPhish class usage examples are shown below.
 

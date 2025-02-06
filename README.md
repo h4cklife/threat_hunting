@@ -70,8 +70,6 @@ vim venv/bin/activate
 
 export APIKey_CheckPhish="your_actual_api_key"
 export APIKey_PhishTank="your_actual_api_key"
-export APIKey_EasyDmarc="your_actual_api_key"
-export APIKey_SkySnag="your_actual_api_key"
 
 source venv/bin/activate
 ```

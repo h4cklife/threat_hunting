@@ -74,6 +74,15 @@ class isPhish(object):
         return response.json()
 
     def scan_with_phishtank(self, url=None):
+        """
+        scan_with_phishtank
+
+        :param url:
+        :return:
+
+        Return PhishTank results in JSON format
+        
+        """
         if url is None:
             url = self.url
 

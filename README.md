@@ -8,7 +8,8 @@ pip install threat-hunting-libs
 
 ## Whois Class
 
-Whois class usage example
+Whois is used to perform lookups on the domain and determine when it was registered, who it was registered with
+and what the abuse contact email is on file. The Whois class usage examples are shown below.
 
 $ python3
 
@@ -29,7 +30,8 @@ w.dict_to_json_str(data=dict_data)
 
 ## SSLChecker Class
 
-SSLChecker class usage example
+SSLChecker is used to verify that a website domain has a valid SSL Certificate. 
+The SSLChecker class usage examples are shown below.
 
 $ python3
 
@@ -49,6 +51,44 @@ True
 sslc.verify_ssl_active()
 True
 
+```
+
+## isPhish Class
+
+isPhish is used to scan website URLs against various services that check for Phishing. This class will require
+you to have a valid API Key for each service you intend to use.
+
+You can use any method you like to insert your API Keys into the environment so that they are
+static between logins or just available when your application is run. 
+
+The isPhish class usage examples are shown below.
+
+```bash
+vim venv/bin/activate
+
+[PASTE YOUR ENV VARIABLES AT THE END OF THE ACTIVATE FILE]
+
+export APIKey_CheckPhish="your_actual_api_key"
+export APIKey_PhishTank="your_actual_api_key"
+export APIKey_EasyDmarc="your_actual_api_key"
+export APIKey_SkySnag="your_actual_api_key"
+
+source venv/bin/activate
+```
+
+$ python
+
+```python
+from thlibs.isphish import isPhish
+isp = isPhish()
+
+cpr = isp.scan_with_checkphish(url="https://example.com", scan_type="full")
+print(cpr)
+{'jobID': '249ad32c-3976-4af4-8d14-54abe2af0beb', 'timestamp': 1738792650318}
+
+r = isp.get_result_from_checkphish(id='249ad32c-3976-4af4-8d14-54abe2af0beb')
+print(r)
+{'job_id': '249ad32c-3976-4af4-8d14-54abe2af0beb', 'status': 'DONE', 'url': 'https://example.com/', 'url_sha256': '0f115db062b7c0dd030b16878c99dea5c354b49dc37b38eb8846179c7783e9d7', 'disposition': 'clean', 'brand': 'unknown', 'insights': 'https://checkphish.ai/insights/url/1738792650331/0f115db062b7c0dd030b16878c99dea5c354b49dc37b38eb8846179c7783e9d7', 'resolved': False, 'screenshot_path': 'https://bst-prod-screenshots.s3-us-west-2.amazonaws.com/20250205/0f115db062b7c0dd030b16878c99dea5c354b49dc37b38eb8846179c7783e9d7_1738792650331.png', 'scan_start_ts': 1738792650318, 'scan_end_ts': 1738792656866, 'error': False, 'image_objects': [], 'categories': ['domain_purchase']}
 ```
 
 
